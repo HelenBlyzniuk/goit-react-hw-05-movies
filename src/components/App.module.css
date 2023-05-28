@@ -5,7 +5,7 @@ display: flex;
     gap: 50px;
     padding: 8px 0;
     margin-bottom: 16px;
-    border-bottom: 1px solid aqua;
+    border-bottom: 1px solid blue;
    
 }
 .container{
@@ -20,7 +20,7 @@ display: flex;
 
 .navLink{
     text-decoration: none;
-    color:aqua;
+    color:blue;
     border:none;
     background-color: none;
     font-size: 15px;
@@ -32,15 +32,15 @@ display: flex;
 .navLink.active{
 color: white;
  border: none;
-background-color:aqua ;
+background-color:blue ;
 }
 .navLink:hover{
     color: white;
     border: none;
-    background-color: aqua;
+    background-color: blue;
 }
 .navLink:focus {
     color: white;
     border: none;
-    background-color:aquamarine;
+    background-color:blue;
 }

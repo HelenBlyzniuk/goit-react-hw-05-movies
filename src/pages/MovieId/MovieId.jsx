@@ -1,6 +1,7 @@
 import { Link, useParams } from 'react-router-dom';
 import { useEffect, useState } from 'react';
 import { getMovieById } from '../../helpers/API';
+import css from './MovieId.module.css';
 
 const MovieId = () => {
   const { movieId } = useParams();
@@ -38,40 +39,51 @@ const MovieId = () => {
       )
       .catch(error => console.log(error.message));
   }, [movieId]);
-
+  console.log(image);
   return (
-    <>
-      <div>
-        <img src={image} alt="backdrop" width="240px" />
-        <ul>
+    <div>
+      <div className={css.wrapper}>
+        <img
+          src={`https://www.themoviedb.org/t/p/w300${image}`}
+          alt="backdrop"
+          width="240px"
+        />
+        <ul className={css.movieInfo}>
           {title}
-          <li>
-            User Score:<span>{vote}</span>
+          <li className={css.movieInfoItem}>
+            User Score:<span className={css.movieInfoItemText}>{vote}</span>
           </li>
-          <li>
-            Overview
-            <span>{overview}</span>
+          <li className={css.movieInfoItem}>
+            Overview:
+            <span className={css.movieInfoItemText}> {overview}</span>
           </li>
-          <li>
-            genres:
+          <li className={css.movieInfoItem}>
+            Genres:
             {genres.map(({ id, name }) => (
-              <span key={id}> {name.toLowerCase()} </span>
+              <span className={css.movieInfoItemText} key={id}>
+                {' '}
+                {name}{' '}
+              </span>
             ))}
           </li>
         </ul>
       </div>
-      <div>
-        <h2>Additional Infor</h2>
-        <ul>
-          <li>
-            <Link to="cast">Cast</Link>
+      <div className={css.addInfo}>
+        <h2 className={css.addInfoTitle}>Additional Information</h2>
+        <ul className={css.addInfoList}>
+          <li className={css.addInfoiItem}>
+            <Link className={css.addInfoLink} to="cast">
+              Cast
+            </Link>
           </li>
-          <li>
-            <Link to="reviews">Reviews</Link>
+          <li className={css.addInfoiItem}>
+            <Link className={css.addInfoLink} to="reviews">
+              Reviews
+            </Link>
           </li>
         </ul>
       </div>
-    </>
+    </div>
   );
 };
 export default MovieId;
