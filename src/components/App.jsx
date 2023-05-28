@@ -2,6 +2,7 @@ import { Routes, Route, Link } from 'react-router-dom';
 
 import Home from '../pages/Home/Home';
 import Movies from '../pages/Movies/Movies';
+import MovieId from 'pages/MovieId/MovieId';
 // import SharedLayout from './Sharelayout/Sharelayout';
 
 import css from './App.module.css';
@@ -23,7 +24,7 @@ export const App = () => {
         <Route path="/" element={<Home />} />
         {/* <Route index element={<Home />} /> */}
         <Route path="/movies" element={<Movies />} />
-        <Route path="/movies/:movieId" element={<div>Movie details</div>}>
+        <Route path="/movies/:movieId" element={<MovieId />}>
           <Route path="cast" element={<div>Movie cast</div>} />
           <Route path="reviews" element={<div>Movie review</div>} />
         </Route>

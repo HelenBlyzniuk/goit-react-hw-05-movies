@@ -4,20 +4,25 @@ import { getTrendingMovies } from '../../helpers/API';
 
 const Home = () => {
   const [movies, setMovies] = useState([]);
-  console.log(movies);
+
   useEffect(() => {
     getTrendingMovies()
-      .then(response => console.log(response))
+      .then(({ data: { results } }) => {
+        setMovies(results);
+      })
       .catch(error => console.log(error.message));
   }, []);
+  console.log(movies);
   return (
     <main>
       <h1>Trending today</h1>
 
       <ul className="popularMovies">
-        <li>
-          <Link to="/movies/:movieId">Film</Link>
-        </li>
+        {movies.map(({ title, id }) => (
+          <li key={id}>
+            <Link to="/movies/:movieId">{title}</Link>
+          </li>
+        ))}
       </ul>
     </main>
   );
