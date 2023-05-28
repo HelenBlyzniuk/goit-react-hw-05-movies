@@ -20,7 +20,7 @@ const Home = () => {
       <ul className="popularMovies">
         {movies.map(({ title, id }) => (
           <li key={id}>
-            <Link to="/movies/:movieId">{title}</Link>
+            <Link to={`/movies/${id}`}>{title}</Link>
           </li>
         ))}
       </ul>

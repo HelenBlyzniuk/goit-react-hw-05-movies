@@ -1,28 +1,62 @@
-import { Link } from 'react-router-dom';
-// import { useParams } from 'react';
+import { Link, useParams } from 'react-router-dom';
+import { useEffect, useState } from 'react';
+import { getMovieById } from '../../helpers/API';
+
 const MovieId = () => {
-  //   console.log(useParams());
+  const { movieId } = useParams();
+  const [image, setImage] = useState('');
+  const [genres, setGenres] = useState([]);
+  const [title, setTitle] = useState('');
+  const [vote, setVote] = useState('');
+  const [overview, setOverview] = useState('');
+
+  useEffect(() => {
+    getMovieById(movieId)
+      .then(
+        ({
+          data: {
+            backdrop_path,
+            genres,
+            original_title,
+            overview,
+            vote_average,
+          },
+        }) => {
+          console.log(
+            backdrop_path,
+            genres,
+            original_title,
+            overview,
+            vote_average
+          );
+          setImage(backdrop_path);
+          setGenres(genres);
+          setTitle(original_title);
+          setOverview(overview);
+          setVote(vote_average);
+        }
+      )
+      .catch(error => console.log(error.message));
+  }, [movieId]);
 
   return (
     <>
       <div>
-        <img src="" alt="" />
+        <img src={image} alt="backdrop" width="240px" />
         <ul>
-          Title
+          {title}
           <li>
-            User Score,<span>3</span>
+            User Score:<span>{vote}</span>
           </li>
           <li>
             Overview
-            <span>
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. At soluta
-              quod iure culpa! Porro doloribus ea accusamus quia, dolore eos
-              beatae quos, debitis autem itaque obcaecati amet repudiandae!
-              Ducimus, excepturi?
-            </span>
+            <span>{overview}</span>
           </li>
           <li>
-            genres<span>comedy,drama</span>
+            genres:
+            {genres.map(({ id, name }) => (
+              <span key={id}> {name.toLowerCase()} </span>
+            ))}
           </li>
         </ul>
       </div>
