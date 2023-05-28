@@ -1,0 +1,46 @@
+.header{
+display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 50px;
+    padding: 8px 0;
+    margin-bottom: 16px;
+    border-bottom: 1px solid aqua;
+   
+}
+.container{
+    max-width: 960px;
+    margin: 0 auto;
+    padding: 0 16px;
+}
+
+.nav{
+    display:flex;
+}
+
+.navLink{
+    text-decoration: none;
+    color:aqua;
+    border:none;
+    background-color: none;
+    font-size: 15px;
+    font-weight: 700;
+    text-align: center;
+    padding: 8px 16px;
+
+}
+.navLink.active{
+color: white;
+ border: none;
+background-color:aqua ;
+}
+.navLink:hover{
+    color: white;
+    border: none;
+    background-color: aqua;
+}
+.navLink:focus {
+    color: white;
+    border: none;
+    background-color:aquamarine;
+}
