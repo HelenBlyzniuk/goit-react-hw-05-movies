@@ -1,0 +1,22 @@
+.wrapper {
+    display: flex;
+}
+
+.movieInfo {
+    font-size: 20px;
+    font-weight: 700;
+    color: blue;
+    list-style: none;
+}
+
+.movieInfoItem {
+    font-size: 16px;
+    font-weight: 600;
+    color: black;
+    margin-top: 20px;
+
+}
+
+.movieInfoItemText {
+    font-weight: 400;
+}
