@@ -51,7 +51,7 @@ const MovieId = () => {
         genres={genres}
         vote={vote}
       />
-      <AdditionalMovieInfo />
+      <AdditionalMovieInfo id={movieId} />
     </main>
   );
 };
