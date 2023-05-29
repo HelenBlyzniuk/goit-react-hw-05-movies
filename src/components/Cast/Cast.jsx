@@ -1,19 +1,22 @@
 import { useEffect, useState } from 'react';
+import { useParams } from 'react-router-dom';
 import { getCast } from '../../helpers/API';
+import css from './Cast.module.css';
 
-const Cast = ({ id }) => {
+const Cast = () => {
+  const { movieId } = useParams();
   const [cast, setCast] = useState([]);
 
   useEffect(() => {
-    getCast(id)
+    getCast(movieId)
       .then(({ data: { cast } }) => {
         setCast(cast);
       })
       .catch(error => console.log(error));
-  });
-  console.log(cast);
+  }, [movieId]);
+
   return (
-    <ul className="Cast">
+    <ul className={css.cast}>
       {cast.map(({ id, profile_path, name, character }) => (
         <li className="CastItem" key={id}>
           <img

@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom';
-import Cast from '../../components/Cast/Cast';
+import Review from '../../components/Review/Review';
 import css from './AdditionalMovieInfo.module.css';
 const AdditionalMovieInfo = ({ id }) => {
   return (
@@ -8,12 +8,12 @@ const AdditionalMovieInfo = ({ id }) => {
       <ul className={css.addInfoList}>
         <li className={css.addInfoiItem}>
           <Link className={css.addInfoLink} to="cast">
-            Cast <Cast id={id} />
+            Cast
           </Link>
         </li>
         <li className={css.addInfoiItem}>
           <Link className={css.addInfoLink} to="reviews">
-            Reviews
+            Reviews <Review />
           </Link>
         </li>
       </ul>

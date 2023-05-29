@@ -21,8 +21,7 @@ const MovieInfoById = ({ image, title, overview, genres, vote }) => {
           Genres:
           {genres.map(({ id, name }) => (
             <span className={css.movieInfoItemText} key={id}>
-              {' '}
-              {name}{' '}
+              {name}
             </span>
           ))}
         </li>

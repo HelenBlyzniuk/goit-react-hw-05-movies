@@ -3,6 +3,7 @@ import { Routes, Route, Link } from 'react-router-dom';
 import Home from '../pages/Home/Home';
 import Movies from '../pages/Movies/Movies';
 import MovieId from 'pages/MovieId/MovieId';
+import Cast from './Cast/Cast';
 // import SharedLayout from './Sharelayout/Sharelayout';
 
 import css from './App.module.css';
@@ -25,7 +26,7 @@ export const App = () => {
         {/* <Route index element={<Home />} /> */}
         <Route path="/movies" element={<Movies />} />
         <Route path="/movies/:movieId" element={<MovieId />}>
-          <Route path="cast" element={<div>Movie cast</div>} />
+          <Route path="cast" element={<Cast />} />
           <Route path="reviews" element={<div>Movie review</div>} />
         </Route>
       </Routes>

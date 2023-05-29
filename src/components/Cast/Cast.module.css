@@ -1,0 +1,10 @@
+.cast{
+    display:flex;
+    flex-wrap:wrap;
+    gap:10px;
+    list-style: none;
+}
+.castItem{
+     margin: 0;
+     
+}

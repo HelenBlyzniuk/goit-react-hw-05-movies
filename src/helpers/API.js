@@ -20,6 +20,9 @@ export const getCast = async (id) => {
   return await axios.get(`${BASEURL}movie/${id}/credits?api_key=${API_KEY}`)
 }
 
+export const getReview = async (id) => {
+  return await axios.get(`${BASEURL}movie/${id}/reviews?api_key=${API_KEY}`)
+}
 // export const getMovieByQuery = async ({ query }) => {
 //   return await axios(`search?query=${query}`);
 // };
