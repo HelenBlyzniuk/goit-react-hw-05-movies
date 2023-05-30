@@ -1,12 +1,32 @@
 // import { Link } from 'react-router-dom';
-// import { useEffect, useState } from 'react';
+import { useState, useEffect } from 'react';
 
 const Movies = () => {
+  const [query, setQuery] = useState('');
+
+  const handleChange = e => {
+    setQuery(e.target.value.trim().toLowerCase());
+  };
+
+  const handleSubmit = e => {
+    e.preventDefault();
+    if (!query) {
+      alert('Make your request');
+      return;
+    }
+  };
+
+  useEffect(() => {});
   return (
     <main>
-      <form>
-        <label htmlFor="">
-          <input type="text" />
+      <form onSubmit={handleSubmit}>
+        <label>
+          <input
+            onChange={handleChange}
+            type="text"
+            value={query}
+            name="query"
+          />
         </label>
         <button type="submit"></button>
       </form>
