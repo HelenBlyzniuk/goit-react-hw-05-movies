@@ -1,5 +1,4 @@
-import { Link } from 'react-router-dom';
-import Review from '../../components/Review/Review';
+import { Link, Outlet } from 'react-router-dom';
 import css from './AdditionalMovieInfo.module.css';
 const AdditionalMovieInfo = ({ id }) => {
   return (
@@ -13,10 +12,11 @@ const AdditionalMovieInfo = ({ id }) => {
         </li>
         <li className={css.addInfoiItem}>
           <Link className={css.addInfoLink} to="reviews">
-            Reviews <Review />
+            Reviews
           </Link>
         </li>
       </ul>
+      <Outlet />
     </div>
   );
 };

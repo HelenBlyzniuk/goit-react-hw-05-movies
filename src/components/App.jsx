@@ -4,6 +4,7 @@ import Home from '../pages/Home/Home';
 import Movies from '../pages/Movies/Movies';
 import MovieId from 'pages/MovieId/MovieId';
 import Cast from './Cast/Cast';
+import Review from './Review/Review';
 // import SharedLayout from './Sharelayout/Sharelayout';
 
 import css from './App.module.css';
@@ -27,7 +28,7 @@ export const App = () => {
         <Route path="/movies" element={<Movies />} />
         <Route path="/movies/:movieId" element={<MovieId />}>
           <Route path="cast" element={<Cast />} />
-          <Route path="reviews" element={<div>Movie review</div>} />
+          <Route path="reviews" element={<Review />} />
         </Route>
       </Routes>
     </div>
