@@ -17,6 +17,7 @@ const MovieInfoById = ({ image, title, overview, genres, vote }) => {
           Overview:
           <span className={css.movieInfoItemText}> {overview}</span>
         </li>
+
         <li className={css.movieInfoItem}>
           Genres:
           {genres.map(({ id, name }) => (
@@ -34,7 +35,7 @@ MovieInfoById.propTypes = {
   image: PropTypes.string.isRequired,
   title: PropTypes.string.isRequired,
   overview: PropTypes.string.isRequired,
-  genres: PropTypes.array.isRequired,
+  genres: PropTypes.array,
   vote: PropTypes.number.isRequired,
 };
 

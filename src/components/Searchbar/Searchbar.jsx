@@ -1,5 +1,7 @@
 import { useState } from 'react';
+import PropTypes from 'prop-types';
 import css from 'components/Searchbar/Searchbar.module.css';
+
 const Searchbar = ({ onSubmit }) => {
   const [query, setQuery] = useState('');
   const handleChange = e => {
@@ -16,7 +18,7 @@ const Searchbar = ({ onSubmit }) => {
   };
   return (
     <form onSubmit={handleSubmit} className={css.searchForm}>
-      <label>
+      <label className={css.label}>
         <input
           className={css.input}
           onChange={handleChange}
@@ -33,3 +35,7 @@ const Searchbar = ({ onSubmit }) => {
 };
 
 export default Searchbar;
+
+Searchbar.propTypes = {
+  onSubmit: PropTypes.func.isRequired,
+};

@@ -23,7 +23,9 @@ const Cast = () => {
     <ul className={css.cast}>
       {cast.map(({ id, profile_path, name, character }) => (
         <li className="CastItem" key={id}>
-          {profile_path === null && <div width="150">Actor</div>}
+          {profile_path === null && (
+            <img src="src/image/default_avatar.jpg" alt="hero" width="150" />
+          )}
           {profile_path !== null && (
             <img
               src={`https://www.themoviedb.org/t/p/w300${profile_path}`}

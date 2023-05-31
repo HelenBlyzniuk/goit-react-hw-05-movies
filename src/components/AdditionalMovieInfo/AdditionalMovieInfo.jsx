@@ -1,4 +1,5 @@
 import { Link, Outlet } from 'react-router-dom';
+import PropTypes from 'prop-types';
 import css from './AdditionalMovieInfo.module.css';
 const AdditionalMovieInfo = ({ id }) => {
   return (
@@ -22,3 +23,7 @@ const AdditionalMovieInfo = ({ id }) => {
 };
 
 export default AdditionalMovieInfo;
+
+AdditionalMovieInfo.propTypes = {
+  id: PropTypes.string.isRequired,
+};
