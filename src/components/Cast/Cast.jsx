@@ -10,7 +10,11 @@ const Cast = () => {
   useEffect(() => {
     getCast(movieId)
       .then(({ data: { cast } }) => {
-        setCast(cast);
+        if (cast.length > 12) {
+          setCast(cast.slice(0, 12));
+        } else {
+          setCast(cast);
+        }
       })
       .catch(error => console.log(error));
   }, [movieId]);
@@ -19,12 +23,15 @@ const Cast = () => {
     <ul className={css.cast}>
       {cast.map(({ id, profile_path, name, character }) => (
         <li className="CastItem" key={id}>
-          <img
-            src={`https://www.themoviedb.org/t/p/w300${profile_path}`}
-            alt="actor"
-            className="CastItemPhoto"
-            width="150px"
-          />
+          {profile_path === null && <div width="150">Actor</div>}
+          {profile_path !== null && (
+            <img
+              src={`https://www.themoviedb.org/t/p/w300${profile_path}`}
+              alt="actor"
+              className="CastItemPhoto"
+              width="150px"
+            />
+          )}
           <p className="CastItemName">{name}</p>
           <p className="CastItemCharacter">{character}</p>
         </li>

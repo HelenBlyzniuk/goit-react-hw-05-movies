@@ -1,39 +1,37 @@
-// import { Link } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import { useState, useEffect } from 'react';
-
+import { getMovieByQuery } from 'helpers/API';
+import Searchbar from 'components/Searchbar/Searchbar';
 const Movies = () => {
   const [query, setQuery] = useState('');
+  const [movies, setMovies] = useState([]);
 
-  const handleChange = e => {
-    setQuery(e.target.value.trim().toLowerCase());
+  const getQuery = value => {
+    setQuery(value);
   };
 
-  const handleSubmit = e => {
-    e.preventDefault();
-    if (!query) {
-      alert('Make your request');
-      return;
-    }
-  };
-
-  useEffect(() => {});
+  useEffect(() => {
+    getMovieByQuery(query)
+      .then(({ data: { results } }) => {
+        setMovies(results);
+      })
+      .catch(error => {
+        console.log(error.messege);
+      });
+  }, [query]);
   return (
     <main>
-      <form onSubmit={handleSubmit}>
-        <label>
-          <input
-            onChange={handleChange}
-            type="text"
-            value={query}
-            name="query"
-          />
-        </label>
-        <button type="submit"></button>
-      </form>
-      <h1>Movies</h1>
-      <ul className="popularMovies">
-        <li></li>
-      </ul>
+      <Searchbar onSubmit={getQuery} />
+      {movies.length > 0 && (
+        <ul className="searchMovies">
+          Movies
+          {movies.map(({ title, id }) => (
+            <li key={id}>
+              <Link to={`/movies/${id}`}>{title}</Link>
+            </li>
+          ))}
+        </ul>
+      )}
     </main>
   );
 };

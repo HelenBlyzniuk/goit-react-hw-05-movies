@@ -4,20 +4,26 @@ import { getReview } from '../../helpers/API';
 
 const Review = () => {
   const { movieId } = useParams();
-  const [reviews, setReviews] = useState('');
-
+  const [reviews, setReviews] = useState([]);
+  // ({ data: { results } }
   useEffect(() => {
     getReview(movieId)
       .then(({ data: { results } }) => {
-        setReviews(results[0]);
+        setReviews(results);
       })
       .catch(error => console.log(error));
   }, [movieId]);
   console.log(reviews);
-
   return (
     <>
-      <p> {reviews.content}</p>
+      {reviews.length === 0 && <div>Sorry, there are no reviews left</div>}
+      {reviews.map(({ author, content, id }) => (
+        <ul>
+          <li key={id}>
+            {author}:{content}
+          </li>
+        </ul>
+      ))}
     </>
   );
 };

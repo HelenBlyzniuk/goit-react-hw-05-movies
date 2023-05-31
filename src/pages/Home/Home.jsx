@@ -12,7 +12,7 @@ const Home = () => {
       })
       .catch(error => console.log(error.message));
   }, []);
-  console.log(movies);
+
   return (
     <main>
       <h1>Trending today</h1>
