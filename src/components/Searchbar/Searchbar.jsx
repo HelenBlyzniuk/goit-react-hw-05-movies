@@ -25,7 +25,9 @@ const Searchbar = ({ onSubmit }) => {
           name="query"
         />
       </label>
-      <button type="submit" className={css.button}></button>
+      <button type="submit" className={css.button}>
+        Search
+      </button>
     </form>
   );
 };

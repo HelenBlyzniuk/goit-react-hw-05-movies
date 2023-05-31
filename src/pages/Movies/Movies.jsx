@@ -7,6 +7,9 @@ const Movies = () => {
   const [movies, setMovies] = useState([]);
 
   const getQuery = value => {
+    if (value === query) {
+      return;
+    }
     setQuery(value);
   };
 
@@ -31,6 +34,12 @@ const Movies = () => {
             </li>
           ))}
         </ul>
+      )}
+      {query && movies.length === 0 && (
+        <div>
+          Sorry, there are no films on your request. Make a new request or
+          correct your previous one
+        </div>
       )}
     </main>
   );
