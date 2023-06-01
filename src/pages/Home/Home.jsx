@@ -6,8 +6,7 @@ import MovieList from 'components/MovieList/MovieList';
 const Home = () => {
   const [movies, setMovies] = useState([]);
   const location = useLocation();
-  console.log(location);
-  const state = { from: location };
+
   useEffect(() => {
     getTrendingMovies()
       .then(({ data: { results } }) => {
@@ -18,7 +17,11 @@ const Home = () => {
 
   return (
     <main>
-      <MovieList listName={'Trending today'} films={movies} state={state} />
+      <MovieList
+        listName={'Trending today'}
+        films={movies}
+        location={location}
+      />
     </main>
   );
 };

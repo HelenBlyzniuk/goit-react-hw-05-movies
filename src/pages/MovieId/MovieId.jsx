@@ -8,8 +8,9 @@ import AdditionalMovieInfo from '../../components/AdditionalMovieInfo/Additional
 const MovieId = () => {
   const { movieId } = useParams();
   const location = useLocation();
-  console.log(location);
-  const backPageLocation = useRef(location.state?.from ?? '/movies');
+  // console.log(location.state.from);
+
+  // const backPageLocation = useRef(location.state?.from ?? '/movies');
   const [image, setImage] = useState('');
   const [genres, setGenres] = useState([]);
   const [title, setTitle] = useState('');
@@ -47,8 +48,8 @@ const MovieId = () => {
 
   return (
     <main>
-      <Link to={backPageLocation.current}>Back</Link>
-
+      <Link to={location.state?.from ?? '/movies'}>Back</Link>
+      <button>Back</button>
       <MovieInfoById
         image={image}
         title={title}
