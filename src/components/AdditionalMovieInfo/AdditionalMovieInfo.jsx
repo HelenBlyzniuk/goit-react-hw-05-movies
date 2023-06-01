@@ -1,6 +1,8 @@
 import { Link, Outlet } from 'react-router-dom';
+import { Suspense } from 'react';
 import PropTypes from 'prop-types';
 import css from './AdditionalMovieInfo.module.css';
+import Loader from 'components/Loader/Loader';
 const AdditionalMovieInfo = ({ id }) => {
   return (
     <div className={css.addInfo}>
@@ -17,7 +19,9 @@ const AdditionalMovieInfo = ({ id }) => {
           </Link>
         </li>
       </ul>
-      <Outlet />
+      <Suspense fallback={<Loader />}>
+        <Outlet />
+      </Suspense>
     </div>
   );
 };
