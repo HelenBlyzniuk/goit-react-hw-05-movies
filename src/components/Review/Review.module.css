@@ -1,0 +1,16 @@
+.reviewItem{
+    display:flex;
+    gap:30px;
+}
+
+.reviewAuthor{
+min-width:150px;
+font-weight: 600;
+ font-size: 16px;
+
+}
+.reviewText{
+    font-weight: 400;
+    font-size: 16px;
+    color:black;
+}

@@ -18,7 +18,7 @@ export default MovieList;
 
 MovieList.propTypes = {
   listName: PropTypes.string.isRequired,
-  films: PropTypes.shape({
+  films: PropTypes.arrayOf({
     title: PropTypes.string.isRequired,
     id: PropTypes.number.isRequired,
   }),
