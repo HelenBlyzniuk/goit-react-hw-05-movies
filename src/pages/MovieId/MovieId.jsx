@@ -1,5 +1,5 @@
 import { useParams, useLocation, Link } from 'react-router-dom';
-import { useEffect, useState, useRef } from 'react';
+import { useEffect, useState } from 'react';
 import { getMovieById } from '../../helpers/API';
 import MovieInfoById from '../../components/MovieInfoById/MovieInfoById';
 
@@ -29,13 +29,6 @@ const MovieId = () => {
             vote_average,
           },
         }) => {
-          console.log(
-            backdrop_path,
-            genres,
-            original_title,
-            overview,
-            vote_average
-          );
           setImage(backdrop_path);
           setGenres(genres);
           setTitle(original_title);
