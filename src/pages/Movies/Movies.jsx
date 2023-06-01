@@ -3,30 +3,39 @@ import { getMovieByQuery } from 'helpers/API';
 import MovieList from 'components/MovieList/MovieList';
 import Searchbar from 'components/Searchbar/Searchbar';
 import Notification from 'components/Notification/Notification';
-
+import Loader from 'components/Loader/Loader';
 const Movies = () => {
   const [query, setQuery] = useState('');
   const [movies, setMovies] = useState([]);
+  const [status, setStatus] = useState('idle');
 
   const getQuery = value => {
     if (value === query) {
       return;
     }
     setQuery(value);
+    setStatus('pending');
   };
 
   useEffect(() => {
     getMovieByQuery(query)
       .then(({ data: { results } }) => {
         setMovies(results);
+        setStatus('resolved');
       })
       .catch(error => {
         console.log(error.messege);
+        setStatus('rejected');
       });
   }, [query]);
   return (
     <main>
       <Searchbar onSubmit={getQuery} />
+      {status === 'pending' && (
+        <div>
+          <Loader />
+        </div>
+      )}
       {movies.length > 0 && <MovieList listName={'Movies'} films={movies} />}
       {query && movies.length === 0 && (
         <Notification
