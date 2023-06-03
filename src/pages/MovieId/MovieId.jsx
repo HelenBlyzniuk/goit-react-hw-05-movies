@@ -1,5 +1,5 @@
-import { useParams, useLocation, Link } from 'react-router-dom';
-import { useEffect, useState } from 'react';
+import { useParams, Link, useLocation } from 'react-router-dom';
+import { useEffect, useState, useRef } from 'react';
 import { getMovieById } from '../../helpers/API';
 import MovieInfoById from '../../components/MovieInfoById/MovieInfoById';
 
@@ -7,16 +7,17 @@ import AdditionalMovieInfo from '../../components/AdditionalMovieInfo/Additional
 
 const MovieId = () => {
   const { movieId } = useParams();
+  console.log(movieId);
   const location = useLocation();
-  // console.log(location.state.from);
-
-  // const backPageLocation = useRef(location.state?.from ?? '/movies');
+  const backPageLocation = useRef(location.state?.from);
+  console.log('backPageLocation onMovieId', backPageLocation);
   const [image, setImage] = useState('');
   const [genres, setGenres] = useState([]);
   const [title, setTitle] = useState('');
   const [vote, setVote] = useState(0);
   const [overview, setOverview] = useState('');
 
+  console.log('MovieId', location);
   useEffect(() => {
     getMovieById(movieId)
       .then(
@@ -41,8 +42,8 @@ const MovieId = () => {
 
   return (
     <main>
-      <Link to={location.state?.from ?? '/movies'}>Back</Link>
-      <button>Back</button>
+      <Link to={backPageLocation.current}>Back</Link>
+
       <MovieInfoById
         image={image}
         title={title}

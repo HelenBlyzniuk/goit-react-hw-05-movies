@@ -1,5 +1,4 @@
 import { useState, useEffect } from 'react';
-import { useLocation } from 'react-router-dom';
 import { getMovieByQuery } from 'helpers/API';
 import MovieList from 'components/MovieList/MovieList';
 import Searchbar from 'components/Searchbar/Searchbar';
@@ -9,7 +8,7 @@ const Movies = () => {
   const [query, setQuery] = useState('');
   const [movies, setMovies] = useState([]);
   const [status, setStatus] = useState('idle');
-  const location = useLocation();
+  const [setError] = useState(null);
 
   const getQuery = value => {
     if (value === query) {
@@ -28,8 +27,9 @@ const Movies = () => {
       .catch(error => {
         console.log(error.messege);
         setStatus('rejected');
+        setError(error);
       });
-  }, [query]);
+  }, [query, setError]);
   return (
     <main>
       <Searchbar onSubmit={getQuery} />
@@ -38,10 +38,8 @@ const Movies = () => {
           <Loader />
         </div>
       )}
-      {movies.length > 0 && (
-        <MovieList listName={'Movies'} films={movies} location={location} />
-      )}
-      {query && movies.length === 0 && (
+      {movies.length > 0 && <MovieList listName={'Movies'} films={movies} />}
+      {query && movies.length === 0 && status !== 'pending' && (
         <Notification
           text={`Sorry, there are no films on your request. Make a new request or correct
       your previous one`}
