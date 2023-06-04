@@ -38,7 +38,9 @@ const Movies = () => {
           <Loader />
         </div>
       )}
-      {movies.length > 0 && <MovieList listName={'Movies'} films={movies} />}
+      {movies.length > 0 && status === 'resolved' && (
+        <MovieList listName={'Movies'} films={movies} />
+      )}
       {query && movies.length === 0 && status !== 'pending' && (
         <Notification
           text={`Sorry, there are no films on your request. Make a new request or correct
