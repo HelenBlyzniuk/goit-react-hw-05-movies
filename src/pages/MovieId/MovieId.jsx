@@ -2,7 +2,7 @@ import { useParams, Link, useLocation } from 'react-router-dom';
 import { useEffect, useState, useRef } from 'react';
 import { getMovieById } from '../../helpers/API';
 import MovieInfoById from '../../components/MovieInfoById/MovieInfoById';
-
+import css from './MovieId.module.css';
 import AdditionalMovieInfo from '../../components/AdditionalMovieInfo/AdditionalMovieInfo';
 
 const MovieId = () => {
@@ -42,7 +42,9 @@ const MovieId = () => {
 
   return (
     <main>
-      <Link to={backPageLocation.current}>Back</Link>
+      <Link to={backPageLocation.current} className={css.buttonBack}>
+        Back
+      </Link>
 
       <MovieInfoById
         image={image}
