@@ -7,17 +7,16 @@ import AdditionalMovieInfo from '../../components/AdditionalMovieInfo/Additional
 
 const MovieId = () => {
   const { movieId } = useParams();
-  console.log(movieId);
+
   const location = useLocation();
   const backPageLocation = useRef(location.state?.from);
-  console.log('backPageLocation onMovieId', backPageLocation);
+
   const [image, setImage] = useState('');
   const [genres, setGenres] = useState([]);
   const [title, setTitle] = useState('');
   const [vote, setVote] = useState(0);
   const [overview, setOverview] = useState('');
 
-  console.log('MovieId', location);
   useEffect(() => {
     getMovieById(movieId)
       .then(

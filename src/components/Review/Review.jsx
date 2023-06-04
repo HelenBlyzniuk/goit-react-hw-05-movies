@@ -13,7 +13,7 @@ const Review = () => {
       })
       .catch(error => console.log(error));
   }, [movieId]);
-  
+
   return (
     <ul className={css.reviewList}>
       {reviews.length === 0 && <div>Sorry, there are no reviews left</div>}
